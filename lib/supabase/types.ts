@@ -110,9 +110,9 @@ export type Database = {
       refuels:         TableDef<Refuel,        Omit<Refuel, 'id'>,                         Partial<Refuel>>;
       stops:           TableDef<Stop,          Omit<Stop, 'id'>,                           Partial<Stop>>;
     };
-    Views: Record<string, never>;
-    Functions: Record<string, never>;
-    Enums: Record<string, never>;
-    CompositeTypes: Record<string, never>;
+    Views: Record<string, unknown>;
+    Functions: Record<string, unknown>;
+    Enums: Record<string, string[]>;
+    CompositeTypes: Record<string, Record<string, unknown>>;
   };
 };
