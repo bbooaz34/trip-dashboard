@@ -91,17 +91,28 @@ export interface Stop {
 
 // ── Supabase Database type (for createClient generics) ──────────────────────
 
+type TableDef<R, I, U> = {
+  Row: R;
+  Insert: I;
+  Update: U;
+  Relationships: [];
+};
+
 export type Database = {
   public: {
     Tables: {
-      trips:            { Row: Trip;          Insert: Omit<Trip, 'id' | 'created_at'>; Update: Partial<Trip> };
-      trip_members:     { Row: TripMember;    Insert: TripMember;                      Update: Partial<TripMember> };
-      groceries:        { Row: GroceryItem;   Insert: Omit<GroceryItem, 'id' | 'created_at'>; Update: Partial<GroceryItem> };
-      frankfurt_items:  { Row: FrankfurtItem; Insert: Omit<FrankfurtItem, 'id' | 'created_at'>; Update: Partial<FrankfurtItem> };
-      notes:            { Row: Note;          Insert: Note;                            Update: Partial<Note> };
-      car_state:        { Row: CarState;      Insert: CarState;                        Update: Partial<CarState> };
-      refuels:          { Row: Refuel;        Insert: Omit<Refuel, 'id'>;              Update: Partial<Refuel> };
-      stops:            { Row: Stop;          Insert: Omit<Stop, 'id'>;               Update: Partial<Stop> };
+      trips:           TableDef<Trip,          Omit<Trip, 'id' | 'created_at'>,           Partial<Trip>>;
+      trip_members:    TableDef<TripMember,    TripMember,                                 Partial<TripMember>>;
+      groceries:       TableDef<GroceryItem,   Omit<GroceryItem, 'id' | 'created_at'>,    Partial<GroceryItem>>;
+      frankfurt_items: TableDef<FrankfurtItem, Omit<FrankfurtItem, 'id' | 'created_at'>, Partial<FrankfurtItem>>;
+      notes:           TableDef<Note,          Note,                                       Partial<Note>>;
+      car_state:       TableDef<CarState,      CarState,                                   Partial<CarState>>;
+      refuels:         TableDef<Refuel,        Omit<Refuel, 'id'>,                         Partial<Refuel>>;
+      stops:           TableDef<Stop,          Omit<Stop, 'id'>,                           Partial<Stop>>;
     };
+    Views: Record<string, never>;
+    Functions: Record<string, never>;
+    Enums: Record<string, never>;
+    CompositeTypes: Record<string, never>;
   };
 };
