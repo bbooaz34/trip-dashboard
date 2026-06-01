@@ -42,9 +42,9 @@ export default function CarClient({ tripId, initialCar, initialRefuels }: CarCli
   useEffect(() => {
     const ch = supabase.channel(`car:${tripId}`)
       .on('postgres_changes', { event: '*', schema: 'public', table: 'car_state', filter: `trip_id=eq.${tripId}` },
-        payload => { if (payload.new) setCar(payload.new as CarState); })
+        (payload: { new: CarState }) => { if (payload.new) setCar(payload.new); })
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'refuels', filter: `trip_id=eq.${tripId}` },
-        payload => { if (payload.new) setRefuels(prev => [...prev, payload.new as Refuel]); })
+        (payload: { new: Refuel }) => { if (payload.new) setRefuels(prev => [...prev, payload.new]); })
       .subscribe();
     return () => { supabase.removeChannel(ch); };
   }, [tripId]);

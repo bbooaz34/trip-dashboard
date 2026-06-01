@@ -49,7 +49,8 @@ export default function ListClient({
       .channel(`${table}:${tripId}`)
       .on('postgres_changes', {
         event: '*', schema: 'public', table, filter: `trip_id=eq.${tripId}`,
-      }, payload => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      }, (payload: any) => {
         if (payload.eventType === 'INSERT') {
           setItems(prev => [...prev, payload.new as ListItem]);
         } else if (payload.eventType === 'UPDATE') {

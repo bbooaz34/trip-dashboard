@@ -23,7 +23,8 @@ export default function NotesClient({ tripId, initialBody }: NotesClientProps) {
       .channel(`notes:${tripId}`)
       .on('postgres_changes', {
         event: 'UPDATE', schema: 'public', table: 'notes', filter: `trip_id=eq.${tripId}`,
-      }, payload => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      }, (payload: any) => {
         // Only apply remote change if not currently editing (timer not running)
         if (!timerRef.current) {
           setBody(payload.new.body as string);
