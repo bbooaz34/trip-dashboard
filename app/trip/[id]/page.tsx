@@ -1,6 +1,7 @@
 // Home — bento grid overview
 import { createClient } from '@/lib/supabase/server';
 import HomeBento from '@/components/ui/HomeBento';
+import type { GroceryItem, FrankfurtItem, Note, CarState } from '@/lib/supabase/types';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,11 +19,12 @@ export default async function HomePage({ params }: PageProps) {
     supabase.from('car_state').select('fuel_liters,tank_capacity_l').eq('trip_id', id).single(),
   ]);
 
-  const grocOpen  = (grocRes.data  ?? []).filter(g => !g.done).length;
-  const shopOpen  = (shopRes.data  ?? []).filter(s => !s.done).length;
-  const noteBody  = notesRes.data?.body ?? '';
-  const fuelPct   = carRes.data
-    ? Math.round((carRes.data.fuel_liters / carRes.data.tank_capacity_l) * 100)
+  const grocOpen  = (grocRes.data  as Pick<GroceryItem, 'done'>[]  | null ?? []).filter(g => !g.done).length;
+  const shopOpen  = (shopRes.data  as Pick<FrankfurtItem, 'done'>[] | null ?? []).filter(s => !s.done).length;
+  const noteBody  = (notesRes.data as Pick<Note, 'body'> | null)?.body ?? '';
+  const car       = carRes.data as Pick<CarState, 'fuel_liters' | 'tank_capacity_l'> | null;
+  const fuelPct   = car
+    ? Math.round((car.fuel_liters / car.tank_capacity_l) * 100)
     : 75;
 
   return (
