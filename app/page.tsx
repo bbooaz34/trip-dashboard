@@ -16,9 +16,9 @@ export default async function RootPage() {
     .select('trip_id')
     .eq('user_id', user.id)
     .limit(1)
-    .single();
+    .maybeSingle();
 
-  if (membership) {
+  if (membership?.trip_id) {
     redirect(`/trip/${membership.trip_id}`);
   }
 
