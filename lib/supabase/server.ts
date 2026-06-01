@@ -1,5 +1,6 @@
 // Server-side Supabase client (used in Server Components, API routes)
 import { createServerClient } from '@supabase/ssr';
+import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
 import type { Database } from './types';
 
@@ -17,7 +18,7 @@ export async function createClient() {
         setAll(cookiesToSet: { name: string; value: string; options?: object }[]) {
           try {
             cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options),
+              cookieStore.set(name, value, options as never),
             );
           } catch {
             // The `setAll` method is called from a Server Component.
@@ -31,9 +32,14 @@ export async function createClient() {
 
 /** Service-role client — bypasses RLS. Server-only, never expose. */
 export function createServiceClient() {
-  const { createClient } = require('@supabase/supabase-js');
-  return createClient<Database>(
+  return createSupabaseClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    },
   );
 }

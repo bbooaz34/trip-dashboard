@@ -1,6 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
 import CarClient from '@/components/ui/CarClient';
-import type { CarState, Refuel } from '@/lib/supabase/types';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,8 +17,8 @@ export default async function CarPage({ params }: PageProps) {
   return (
     <CarClient
       tripId={id}
-      initialCar={(carRes.data as CarState | null) ?? null}
-      initialRefuels={(refuelsRes.data as Refuel[] | null) ?? []}
+      initialCar={carRes.data ?? null}
+      initialRefuels={refuelsRes.data ?? []}
     />
   );
 }

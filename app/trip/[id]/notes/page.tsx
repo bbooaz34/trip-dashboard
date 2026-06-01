@@ -13,7 +13,7 @@ export default async function NotesPage({ params }: PageProps) {
     .from('notes')
     .select('body')
     .eq('trip_id', id)
-    .single() as unknown as { data: { body: string } | null };
+    .single();
 
   return <NotesClient tripId={id} initialBody={data?.body ?? ''} />;
 }

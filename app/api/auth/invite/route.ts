@@ -40,7 +40,7 @@ export async function POST(request: Request) {
   // Add them as a pending member (they'll confirm when they click the link)
   // Look up invited user's ID
   const { data: invitedUser } = await admin.auth.admin.listUsers();
-  const invitedRecord = invitedUser?.users.find((u: { email?: string }) => u.email === email);
+  const invitedRecord = invitedUser?.users.find(u => u.email === email);
 
   if (invitedRecord) {
     await admin.from('trip_members').upsert({

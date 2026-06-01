@@ -3,7 +3,6 @@ import { createClient } from '@/lib/supabase/server';
 import TopBar from '@/components/nav/TopBar';
 import Hero from '@/components/nav/Hero';
 import BottomTabBar from '@/components/nav/BottomTabBar';
-import type { TripMember } from '@/lib/supabase/types';
 
 interface TripLayoutProps {
   children: React.ReactNode;
@@ -24,7 +23,7 @@ export default async function TripLayout({ children, params }: TripLayoutProps) 
     .select('role')
     .eq('trip_id', id)
     .eq('user_id', user.id)
-    .single() as unknown as { data: Pick<TripMember, 'role'> | null };
+    .single();
 
   if (!membership) redirect('/login?error=no-access');
 
