@@ -1,0 +1,40 @@
+/* ── Design tokens — identical to v3.1 ── */
+:root {
+  /* backgrounds */
+  --bg: #FAFAF7;
+  --surface: #FFFFFF;
+  --surface-soft: #F4F1EA;
+
+  /* ink */
+  --ink: #1A1A1A;
+  --ink-2: #4A4A4A;
+  --ink-3: #8A8A85;
+  --ink-4: #BDBDB6;
+
+  /* borders */
+  --line: rgba(26, 26, 26, 0.08);
+  --line-2: rgba(26, 26, 26, 0.14);
+
+  /* accent palettes */
+  --peach: #FFE4D1;
+  --peach-ink: #B5491E;
+  --sage: #DDE7D4;
+  --sage-ink: #4A6B3A;
+  --sky: #D5E5F0;
+  --sky-ink: #2C5878;
+  --butter: #FFF1C5;
+  --butter-ink: #8C6A12;
+  --lilac: #E4DEF0;
+  --lilac-ink: #5B4884;
+  --blush: #F9DCDC;
+  --blush-ink: #9C3838;
+
+  /* radii */
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 24px;
+  --r-xl: 32px;
+
+  /* typography */
+  --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}

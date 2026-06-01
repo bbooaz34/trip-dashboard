@@ -1,0 +1,236 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-01",
+        "name": "בייס קמפ – Seestraße 43b, Titisee-Neustadt",
+        "category": "base",
+        "position": 1,
+        "description_html": "<b>זמן נסיעה:</b> —<br/><b>מרחק מהבסיס:</b> —<br/><br/>נקודת הבסיס שלנו ליער השחור, יולי 2026."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.155613, 47.89839] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-02",
+        "name": "מפלי טודנאו (Todtnauer Wasserfall) + הגשר התלוי",
+        "category": "waterfall",
+        "position": 2,
+        "description_html": "<b>זמן נסיעה:</b> כ-25 דק' נסיעה<br/><b>מרחק מהבסיס:</b> 17.2 ק\"מ אווירי<br/><br/>מפל טבע מרהיב + גשר תלוי בגובה 120 מ' ואורך 450 מ'. מסלולי הליכה ארוכים/קצרים. נעליים נוחות; ירידה תלולה, לא ידידותי לעגלות."
+      },
+      "geometry": { "type": "Point", "coordinates": [7.939075, 47.844016] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-03",
+        "name": "מפלי טריברג (Triberger Wasserfälle)",
+        "category": "waterfall",
+        "position": 3,
+        "description_html": "<b>זמן נסיעה:</b> כשעה וחצי נסיעה<br/><b>מרחק מהבסיס:</b> 26.2 ק\"מ אווירי<br/><br/>אחד מאתרי הטבע היפים. 3 כניסות (מומלץ דרך העיירה), 3 מסלולים. עם ילדים – המסלול הצהוב, שעה הלוך-חזור. להביא בוטנים לסנאים!"
+      },
+      "geometry": { "type": "Point", "coordinates": [8.230174, 48.128383] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-04",
+        "name": "מפלי הריין – Schloss Laufen (גדה דרומית)",
+        "category": "waterfall",
+        "position": 4,
+        "description_html": "<b>זמן נסיעה:</b> כשעה ורבע נסיעה<br/><b>מרחק מהבסיס:</b> 42.3 ק\"מ אווירי<br/><br/>המפלים המישוריים הגדולים באירופה. גישה דרך טירת לאופן (דרום) או טירת וורת' (צפון). שיט וגלריות תצפית. להביא בגדים להחלפה – נרטבים! דרכון רצוי."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.615003, 47.676465] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-05",
+        "name": "אגם שלוכזי (Schluchsee)",
+        "category": "lake",
+        "position": 5,
+        "description_html": "<b>זמן נסיעה:</b> כ-20 דק' נסיעה<br/><b>מרחק מהבסיס:</b> 8.9 ק\"מ אווירי<br/><br/>האגם הגדול ביער השחור, מים בהירים. שיט בספינת נוסעים, מסלולי הליכה ואופניים סביב האגם, רצועת חוף."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.151914, 47.818261] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-06",
+        "name": "הר פלדברג – תחנת הרכבל",
+        "category": "mountain",
+        "position": 6,
+        "description_html": "<b>זמן נסיעה:</b> כ-20 דק' נסיעה<br/><b>מרחק מהבסיס:</b> 9.7 ק\"מ אווירי<br/><br/>ההר הגבוה ביער השחור (~1500 מ'). עלייה ברכבל או ברגל. קריר למעלה – להביא שכבה."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.03684, 47.86228] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-07",
+        "name": "פרייבורג – קתדרלת Freiburg Minster",
+        "category": "city",
+        "position": 7,
+        "description_html": "<b>זמן נסיעה:</b> כ-40 דק' נסיעה<br/><b>מרחק מהבסיס:</b> 25.0 ק\"מ אווירי<br/><br/>אחת הכנסיות העתיקות והיפות באירופה. 209 מדרגות לתצפית. בכיכר Münsterplatz שוק איכרים יומי (חוץ מיום ראשון)."
+      },
+      "geometry": { "type": "Point", "coordinates": [7.852789, 47.995582] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-08",
+        "name": "Stein am Rhein – עיירה ציורית",
+        "category": "city",
+        "position": 8,
+        "description_html": "<b>זמן נסיעה:</b> כ-20 דק' מהמפלים<br/><b>מרחק מהבסיס:</b> 58.7 ק\"מ אווירי<br/><br/>אחת העיירות היפות בשוויץ – רחוב ראשי וכיכר עירייה עם בתים עתיקים מצוירים. רוב המקומות מקבלים יורו/אשראי."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.856652, 47.659912] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-09",
+        "name": "קונסטנץ (Konstanz) – אגם קונסטנץ",
+        "category": "city",
+        "position": 9,
+        "description_html": "<b>זמן נסיעה:</b> כ-1.5 שעות נסיעה<br/><b>מרחק מהבסיס:</b> 79.9 ק\"מ אווירי<br/><br/>מובלעת גרמנית על האגם, נקודת מפגש גבולות גרמניה-אוסטריה-שוויץ. טיילת על האגם, גלידריות, ידידותי למשפחות."
+      },
+      "geometry": { "type": "Point", "coordinates": [9.173674, 47.677981] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-10",
+        "name": "Fundorena – ג'ימבורי וטרמפולינות",
+        "category": "kids",
+        "position": 10,
+        "description_html": "<b>זמן נסיעה:</b> צמוד לרכבל פלדברג<br/><b>מרחק מהבסיס:</b> 9.8 ק\"מ אווירי<br/><br/>מתחם פעילות מקורה: ג'ימבורי, טרמפולינות, מסלול חבלים. מתאים לכל גיל. שילוב טוב עם טודנאו."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.036905, 47.861101] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-11",
+        "name": "Spaß-Park Hochschwarzwald",
+        "category": "kids",
+        "position": 11,
+        "description_html": "<b>זמן נסיעה:</b> ליד שלוכזי<br/><b>מרחק מהבסיס:</b> 8.7 ק\"מ אווירי<br/><br/>פארק שעשועים משפחתי קטן: אבובים במדרון, מתקני משחק, אזור מקורה. מצוין לגיל הרך."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.178333, 47.821944] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-12",
+        "name": "Aqua Fun – פארק מים",
+        "category": "kids",
+        "position": 12,
+        "description_html": "<b>זמן נסיעה:</b> ליד שלוכזי<br/><b>מרחק מהבסיס:</b> 9.5 ק\"מ אווירי<br/><br/>ליום קיצי: בריכות חיצוניות + גישה לרחיצה באגם. בריכה לפעוטות + מתקני שעשועים."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.17903, 47.81406] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-13",
+        "name": "Rulantica – פארק מים, רוסט",
+        "category": "kids",
+        "position": 13,
+        "description_html": "<b>זמן נסיעה:</b> כשעה נסיעה<br/><b>מרחק מהבסיס:</b> 50.8 ק\"מ אווירי<br/><br/>פארק מים ענק (14 מתחמים, כולל מקורה). אזורים מצוינים לפעוטות. עד גיל 3 חינם. להזמין כרטיסים מראש, להגיע מוקדם, להימנע מסופ\"ש."
+      },
+      "geometry": { "type": "Point", "coordinates": [7.74018, 48.261033] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-14",
+        "name": "אי הפרחים מיינאו (Insel Mainau)",
+        "category": "nature",
+        "position": 14,
+        "description_html": "<b>זמן נסיעה:</b> ליד קונסטנץ<br/><b>מרחק מהבסיס:</b> 80.6 ק\"מ אווירי<br/><br/>אי בלב אגם קונסטנץ עם גנים בוטניים, מאות אלפי פרחים, מפלי מים וחממות. מצוין לאוהבי טבע (חלק אמרו שמשעמם – לשקול)."
+      },
+      "geometry": { "type": "Point", "coordinates": [9.195725, 47.705271] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-15",
+        "name": "מוזיאון השינקן (Schwarzwälder Schinkenmuseum)",
+        "category": "museum",
+        "position": 15,
+        "description_html": "<b>זמן נסיעה:</b> בקצה הר פלדברג<br/><b>מרחק מהבסיס:</b> 10.6 ק\"מ אווירי<br/><br/>ממוקם במגדל פלדברג. מוזיאון אינטראקטיבי קטן על נקניק היער השחור + תצפית מהמגדל."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.022081, 47.864454] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-16",
+        "name": "מוזיאון היער השחור (Schwarzwaldmuseum)",
+        "category": "museum",
+        "position": 16,
+        "description_html": "<b>זמן נסיעה:</b> במרכז טריברג<br/><b>מרחק מהבסיס:</b> 26.2 ק\"מ אווירי<br/><br/>מוזיאון על תרבות והיסטוריית האזור (שעוני קוקיה ועוד). אופציה ליום גשום."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.229702, 48.129072] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-17",
+        "name": "Todtnauer Hütte – בקתת יער שחור",
+        "category": "food",
+        "position": 17,
+        "description_html": "<b>זמן נסיעה:</b> צמוד למפלי טודנאו<br/><b>מרחק מהבסיס:</b> 12.2 ק\"מ אווירי<br/><br/>בקתה מסורתית עם מאכלים מקומיים. עצירת צהריים/חטיף מצוינת תוך כדי סיור באזור."
+      },
+      "geometry": { "type": "Point", "coordinates": [7.999598, 47.866865] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-18",
+        "name": "Hexenlochmühle – 'חור המכשפה'",
+        "category": "food",
+        "position": 18,
+        "description_html": "<b>זמן נסיעה:</b> בדרך לטריברג<br/><b>מרחק מהבסיס:</b> 12.4 ק\"מ אווירי<br/><br/>בית עץ עתיק עם תחנת מים פעילה בלב טבע מיוער. חנות מזכרות + מסעדה. עצירת קפה/נשנוש מושלמת בדרך."
+      },
+      "geometry": { "type": "Point", "coordinates": [8.139925, 48.009259] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-19",
+        "name": "כנסיית St. Johannes Baptist, טודנאו",
+        "category": "church",
+        "position": 19,
+        "description_html": "<b>זמן נסיעה:</b> במרכז העיירה טודנאו<br/><b>מרחק מהבסיס:</b> 17.3 ק\"מ אווירי<br/><br/>כנסיה בפטיסטית במרכז טודנאו, שווה הצצה תוך כדי הביקור באזור."
+      },
+      "geometry": { "type": "Point", "coordinates": [7.946482, 47.831421] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-20",
+        "name": "Parkhaus Karlsbau – חניה לעיר העתיקה",
+        "category": "parking",
+        "position": 20,
+        "description_html": "<b>זמן נסיעה:</b> במרכז פרייבורג<br/><b>מרחק מהבסיס:</b> 25.0 ק\"מ אווירי<br/><br/>החניון הקרוב ביותר לעיר העתיקה ולשוק. מומלץ לביקור קצר; ליום מלא – להעדיף Park & Ride."
+      },
+      "geometry": { "type": "Point", "coordinates": [7.854281, 47.99734] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "stop-21",
+        "name": "Park & Ride Freiburg – לרכבת קלה",
+        "category": "parking",
+        "position": 21,
+        "description_html": "<b>זמן נסיעה:</b> פאתי פרייבורג<br/><b>מרחק מהבסיס:</b> 26.6 ק\"מ אווירי<br/><br/>חנייה במחיר נוח מחוץ למרכז + רכבת קלה לעיר העתיקה. עדיף לימי טיול ארוכים."
+      },
+      "geometry": { "type": "Point", "coordinates": [7.862638, 48.034965] }
+    }
+  ]
+}
