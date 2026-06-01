@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import type { StopCategory } from '@/lib/supabase/types';
+import type { StopCategory } from '@/lib/types';
 import { CATEGORY_COLOR, CATEGORY_LABEL, haversineKm, formatDistance, googleMapsUrl, wazeUrl } from '@/lib/stops';
 
 // Types

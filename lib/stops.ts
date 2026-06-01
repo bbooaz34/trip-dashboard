@@ -1,4 +1,4 @@
-import type { StopCategory } from './supabase/types';
+import type { StopCategory } from './types';
 
 // Category → map marker color
 export const CATEGORY_COLOR: Record<StopCategory, string> = {
