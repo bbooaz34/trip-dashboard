@@ -12,3 +12,10 @@ export type StopCategory =
   | 'church'
   | 'parking'
   | 'nature';
+
+// Convenience row aliases derived from the generated DB schema.
+// Kept here (not in lib/supabase/types.ts) so schema regens don't wipe them.
+import type { Database } from '@/lib/supabase/types';
+
+export type CarState = Database['public']['Tables']['car_state']['Row'];
+export type Refuel = Database['public']['Tables']['refuels']['Row'];

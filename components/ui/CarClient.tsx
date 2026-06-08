@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import type { CarState, Refuel } from '@/lib/supabase/types';
+import type { CarState, Refuel } from '@/lib/types';
 
 interface CarClientProps {
   tripId: string;

@@ -70,37 +70,46 @@ export default function ListClient({
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
 
-    const newItem = {
+    const base = {
       trip_id: tripId,
       text,
       done: false,
       position: items.length,
       created_by: user.id,
-      ...(showMarket ? { market } : {}),
     };
 
     // Optimistic update
     const tempId = `temp-${Date.now()}`;
-    setItems(prev => [...prev, { id: tempId, ...newItem } as ListItem]);
+    setItems(prev => [
+      ...prev,
+      { id: tempId, ...base, ...(showMarket ? { market } : {}) } as ListItem,
+    ]);
     setInput('');
     inputRef.current?.focus();
 
-    const { data } = await supabase.from(table as never).insert(newItem).select().single();
-    if (data) {
-      setItems(prev => prev.map(it => it.id === tempId ? (data as ListItem) : it));
+    // Narrow on the literal table name so the insert payload matches that table's
+    // schema exactly — only `groceries` has a `market` column.
+    const inserted =
+      table === 'groceries'
+        ? await supabase.from('groceries').insert({ ...base, market }).select().single()
+        : await supabase.from('frankfurt_items').insert(base).select().single();
+
+    if (inserted.data) {
+      const row = inserted.data as ListItem;
+      setItems(prev => prev.map(it => (it.id === tempId ? row : it)));
     }
   }
 
   async function toggleItem(item: ListItem) {
     // Optimistic update
     setItems(prev => prev.map(it => it.id === item.id ? { ...it, done: !it.done } : it));
-    await supabase.from(table as never).update({ done: !item.done }).eq('id', item.id);
+    await supabase.from(table).update({ done: !item.done }).eq('id', item.id);
   }
 
   async function deleteItem(item: ListItem) {
     if (!confirm(`Remove "${item.text}"?`)) return;
     setItems(prev => prev.filter(it => it.id !== item.id));
-    await supabase.from(table as never).delete().eq('id', item.id);
+    await supabase.from(table).delete().eq('id', item.id);
   }
 
   return (
