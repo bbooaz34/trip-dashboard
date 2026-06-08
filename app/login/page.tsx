@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import { VERSION_LABEL } from '@/lib/version';
 
 type Step = 'email' | 'code';
 
@@ -177,6 +178,10 @@ export default function LoginPage() {
             </div>
           </form>
         )}
+
+        <div style={{ marginTop: 24, fontSize: 11, opacity: 0.5, textAlign: 'center' }}>
+          {VERSION_LABEL}
+        </div>
       </div>
     </div>
   );
