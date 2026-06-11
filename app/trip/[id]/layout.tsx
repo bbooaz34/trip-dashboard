@@ -1,7 +1,6 @@
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import TopBar from '@/components/nav/TopBar';
-import Hero from '@/components/nav/Hero';
 import BottomTabBar from '@/components/nav/BottomTabBar';
 
 interface TripLayoutProps {
@@ -13,11 +12,9 @@ export default async function TripLayout({ children, params }: TripLayoutProps) 
   const { id } = await params;
   const supabase = await createClient();
 
-  // Auth guard
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/login');
 
-  // Membership guard
   const { data: membership } = await supabase
     .from('trip_members')
     .select('role')
@@ -29,8 +26,7 @@ export default async function TripLayout({ children, params }: TripLayoutProps) 
 
   return (
     <div className="app">
-      <TopBar email={user.email} />
-      <Hero />
+      <TopBar email={user.email} tripId={id} />
       <main className="panels">
         {children}
       </main>

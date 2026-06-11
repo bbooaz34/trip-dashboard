@@ -10,7 +10,6 @@ export default function WeatherQuickTile() {
   const [icon, setIcon] = useState('ti-cloud');
 
   useEffect(() => {
-    // Hydrate from cache immediately
     const cached = cacheGet('weather', null as { temp: number; desc: string; icon: string } | null);
     if (cached) {
       setTemp(cached.temp);
@@ -18,7 +17,6 @@ export default function WeatherQuickTile() {
       setIcon(cached.icon);
     }
 
-    // Then fetch fresh
     fetchWeather().then(data => {
       const info = weatherCodeInfo(data.current.weatherCode);
       setTemp(data.current.temp);
@@ -31,15 +29,20 @@ export default function WeatherQuickTile() {
   }, []);
 
   return (
-    <div className="tile tile-color tile-sky">
-      <div className="tile-head">
-        <div className="tile-icon-wrap">
-          <i className={`ti ${icon}`} />
-        </div>
+    <div
+      className="widget on-color"
+      style={{
+        background:
+          'radial-gradient(130% 100% at 80% -20%, rgba(255,255,255,0.30), transparent 55%),' +
+          'linear-gradient(165deg, #54A4E0 0%, #3D7FC2 62%, #2C5C97 100%)',
+      }}
+    >
+      <div className="wg-head">
+        <i className={`ti ${icon}`} style={{ fontSize: 16 }} />
+        <span className="wg-label">Titisee</span>
       </div>
-      <div className="tile-label">Now in Titisee</div>
-      <div className="tile-value">{temp !== null ? `${temp}°` : '—°'}</div>
-      <div className="tile-sub">{desc}</div>
+      <div className="wg-big tnum">{temp !== null ? `${temp}°` : '—°'}</div>
+      <div className="wg-sub">{desc}</div>
     </div>
   );
 }

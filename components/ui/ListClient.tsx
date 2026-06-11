@@ -20,10 +20,10 @@ interface ListClientProps {
   table: 'groceries' | 'frankfurt_items';
   initialItems: ListItem[];
   title: string;
-  countLabel: string;
-  countColor: { bg: string; ink: string };
+  subtitle: string;
   placeholder: string;
   showMarket: boolean;
+  footer?: string;
 }
 
 export default function ListClient({
@@ -31,10 +31,10 @@ export default function ListClient({
   table,
   initialItems,
   title,
-  countLabel,
-  countColor,
+  subtitle,
   placeholder,
   showMarket,
+  footer,
 }: ListClientProps) {
   const [items, setItems]   = useState<ListItem[]>(initialItems);
   const [input, setInput]   = useState('');
@@ -43,7 +43,6 @@ export default function ListClient({
 
   const supabase = createClient();
 
-  // Realtime subscription
   useEffect(() => {
     const ch = supabase
       .channel(`${table}:${tripId}`)
@@ -70,25 +69,12 @@ export default function ListClient({
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
 
-    const base = {
-      trip_id: tripId,
-      text,
-      done: false,
-      position: items.length,
-      created_by: user.id,
-    };
-
-    // Optimistic update
+    const base = { trip_id: tripId, text, done: false, position: items.length, created_by: user.id };
     const tempId = `temp-${Date.now()}`;
-    setItems(prev => [
-      ...prev,
-      { id: tempId, ...base, ...(showMarket ? { market } : {}) } as ListItem,
-    ]);
+    setItems(prev => [...prev, { id: tempId, ...base, ...(showMarket ? { market } : {}) } as ListItem]);
     setInput('');
     inputRef.current?.focus();
 
-    // Narrow on the literal table name so the insert payload matches that table's
-    // schema exactly — only `groceries` has a `market` column.
     const inserted =
       table === 'groceries'
         ? await supabase.from('groceries').insert({ ...base, market }).select().single()
@@ -101,7 +87,6 @@ export default function ListClient({
   }
 
   async function toggleItem(item: ListItem) {
-    // Optimistic update
     setItems(prev => prev.map(it => it.id === item.id ? { ...it, done: !it.done } : it));
     await supabase.from(table).update({ done: !item.done }).eq('id', item.id);
   }
@@ -113,72 +98,73 @@ export default function ListClient({
   }
 
   return (
-    <section>
-      <div className="section-title-row">
-        <div className="section-title" style={{ margin: 0 }}>{title}</div>
-        <span className="tile-chip" style={{ background: countColor.bg, color: countColor.ink }}>
-          {openCount} {countLabel}
-        </span>
+    <>
+      <div className="large-title">
+        <h1>{title}</h1>
+        <div className="lt-sub">{subtitle} · {openCount} to buy</div>
       </div>
-      <div className="tile">
-        {showMarket && (
-          <div className="market-pick">
-            {MARKETS.map(m => (
-              <button
-                key={m}
-                className={`market-btn ${market === m ? 'active' : ''}`}
-                onClick={() => setMarket(m)}
-              >
-                {m}
-              </button>
-            ))}
+
+      {/* Add row */}
+      <div className="group tight">
+        <div className="card">
+          <div className="add-row">
+            <span className="add-ic"><i className="ti ti-plus" /></span>
+            <input
+              ref={inputRef}
+              placeholder={placeholder}
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              onKeyDown={e => { if (e.key === 'Enter') addItem(); }}
+            />
+            {input.trim() && (
+              <button className="btn-link" style={{ fontWeight: 600 }} onClick={addItem}>Add</button>
+            )}
           </div>
-        )}
-
-        <div className="row-input">
-          <input
-            ref={inputRef}
-            className="field"
-            type="text"
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            onKeyDown={e => { if (e.key === 'Enter') addItem(); }}
-            placeholder={placeholder}
-          />
-          <button className="btn-add" onClick={addItem} aria-label="Add item">
-            <i className="ti ti-plus" />
-          </button>
+          {showMarket && (
+            <div className="market-row">
+              {MARKETS.map(m => (
+                <button
+                  key={m}
+                  className={`market-pill${market === m ? ' active' : ''}`}
+                  onClick={() => setMarket(m)}
+                >
+                  {m}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
+      </div>
 
-        <div className="item-list">
+      {/* Items */}
+      <div className="group tight">
+        <div className="card">
           {items.length === 0 ? (
-            <div className="empty-block">No items yet. Add one above.</div>
+            <div className="empty-state" style={{ padding: '16px' }}>Nothing on the list yet — add your first item above.</div>
           ) : (
             items.map(item => (
-              <div key={item.id} className={`item ${item.done ? 'done' : ''}`}>
+              <div key={item.id} className={`rem${item.done ? ' done' : ''}`}>
                 <button
-                  className={`check-btn ${item.done ? 'checked' : ''}`}
+                  className={`rem-check${item.done ? ' done' : ''}`}
                   onClick={() => toggleItem(item)}
                   aria-label={item.done ? 'Mark not done' : 'Mark done'}
                 >
-                  <i className="ti ti-check" />
+                  <i className={`ti ${item.done ? 'ti-circle-check-filled' : 'ti-circle'}`} />
                 </button>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div className="item-text">{item.text}</div>
-                  {item.market && <div className="item-meta">{item.market}</div>}
+                <div className="rem-body">
+                  <div className="rem-text">{item.text}</div>
+                  {item.market && <div className="rem-meta">{item.market}</div>}
                 </div>
-                <button
-                  className="del-btn"
-                  onClick={() => deleteItem(item)}
-                  aria-label="Remove"
-                >
-                  <i className="ti ti-x" />
+                <button className="rem-del" onClick={() => deleteItem(item)} aria-label="Delete">
+                  <i className="ti ti-trash" />
                 </button>
               </div>
             ))
           )}
         </div>
       </div>
-    </section>
+
+      {footer && <div className="group-footer">{footer}</div>}
+    </>
   );
 }

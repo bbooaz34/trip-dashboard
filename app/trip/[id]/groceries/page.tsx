@@ -20,9 +20,8 @@ export default async function GroceriesPage({ params }: PageProps) {
       tripId={id}
       table="groceries"
       initialItems={data ?? []}
-      title="Local groceries"
-      countLabel="to buy"
-      countColor={{ bg: 'var(--butter)', ink: 'var(--butter-ink)' }}
+      title="Groceries"
+      subtitle="shared with the crew"
       placeholder="Milk, bread, diapers…"
       showMarket
     />
